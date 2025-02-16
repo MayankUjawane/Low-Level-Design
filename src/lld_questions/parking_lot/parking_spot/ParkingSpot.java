@@ -19,7 +19,8 @@ public abstract class ParkingSpot {
         this.isEmpty = false;
     }
 
-    public void removeVehicle() {
+    public void unParkVehicle() {
+        System.out.println("Marking parking spot: " + this.id + " available");
         this.vehicle = null;
         this.isEmpty = true;
     }

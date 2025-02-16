@@ -34,7 +34,11 @@ public abstract class ParkingSpotManager {
         return parking;
     }
 
-    public void removeVehicle(Vehicle vehicle) {
-
+    public void unparkVehicle(ParkingSpot parkingSpot) {
+        for(ParkingSpot currParkingSpot: parkingSpotList) {
+            if(parkingSpot.getId() == currParkingSpot.getId()) {
+                currParkingSpot.unParkVehicle();
+            }
+        }
     }
 }
