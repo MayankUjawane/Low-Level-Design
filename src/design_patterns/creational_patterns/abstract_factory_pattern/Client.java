@@ -1,8 +1,8 @@
 package design_patterns.creational_patterns.abstract_factory_pattern;
 
-import design_patterns.creational_patterns.abstract_factory_pattern.factory.FurnitureSet;
-import design_patterns.creational_patterns.abstract_factory_pattern.factory.ModernFurnitureSet;
-import design_patterns.creational_patterns.abstract_factory_pattern.factory.VictorianFurnitureSet;
+import design_patterns.creational_patterns.abstract_factory_pattern.abstract_factory.FurnitureFactory;
+import design_patterns.creational_patterns.abstract_factory_pattern.abstract_factory.ModernFurnitureFactory;
+import design_patterns.creational_patterns.abstract_factory_pattern.abstract_factory.VictorianFurnitureFactory;
 
 public class Client {
     public static void main(String[] args) {
@@ -11,18 +11,17 @@ public class Client {
         provideFurniture("Anything");
     }
     private static void provideFurniture(String typeOfFurniture) {
-        FurnitureSetGenerator furnitureSetGenerator;
-        FurnitureSet furnitureSet;
+        FurnitureFactory furnitureFactory;
+
         if(typeOfFurniture.equals("Modern")) {
-            furnitureSet = new ModernFurnitureSet();
-            furnitureSetGenerator = new FurnitureSetGenerator(furnitureSet);
-            furnitureSetGenerator.getFurnitureSet();
+            furnitureFactory = new ModernFurnitureFactory();
         } else if(typeOfFurniture.equals("Victorian")) {
-            furnitureSet = new VictorianFurnitureSet();
-            furnitureSetGenerator = new FurnitureSetGenerator(furnitureSet);
-            furnitureSetGenerator.getFurnitureSet();
+            furnitureFactory = new VictorianFurnitureFactory();
         } else {
             System.out.println("Sorry this type of furniture set is not available in our store!");
+            return;
         }
+
+        furnitureFactory.getFurniture();
     }
 }
